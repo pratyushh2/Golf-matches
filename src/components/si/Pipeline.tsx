@@ -122,9 +122,9 @@ export function Pipeline() {
             {/* active stage explanation */}
             <div className="mt-12 grid gap-8 md:grid-cols-12">
               <div className="md:col-span-5">
-                <p className="font-mono text-[0.7rem] tracking-[0.16em] text-signal">{stages[active].n}</p>
-                <h3 className="mt-4 text-2xl tracking-[-0.02em] sm:text-3xl">{stages[active].label}</h3>
-                <p className="mt-4 max-w-sm leading-relaxed text-muted-foreground">{stages[active].copy}</p>
+                <p className="font-mono text-[0.7rem] tracking-[0.16em] text-signal">{stages[active]!.n}</p>
+                <h3 className="mt-4 text-2xl tracking-[-0.02em] sm:text-3xl">{stages[active]!.label}</h3>
+                <p className="mt-4 max-w-sm leading-relaxed text-muted-foreground">{stages[active]!.copy}</p>
               </div>
               <div className="md:col-span-5 md:col-start-8">
                 <ol className="space-y-2 md:hidden">

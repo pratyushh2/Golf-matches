@@ -97,9 +97,9 @@ export function ParticleField() {
 
       // connections
       for (let i = 0; i < particles.length; i++) {
-        const a = particles[i];
+        const a = particles[i]!;
         for (let j = i + 1; j < particles.length; j++) {
-          const b = particles[j];
+          const b = particles[j]!;
           const dd = Math.hypot(a.x - b.x, a.y - b.y);
           if (dd > 108) continue;
           const near = Math.max(a.k, b.k);
