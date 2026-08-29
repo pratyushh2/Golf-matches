@@ -13,17 +13,20 @@ export function Hero() {
       <div className="relative mx-auto w-full max-w-6xl px-6">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="hidden md:col-span-2 md:block">
-            <p className="label-mono">SI / 01</p>
-            <div className="rule-line mt-4" />
-            <p className="label-mono mt-4 leading-relaxed">
-              SIGNAL
+            <p className="text-[0.7rem] tracking-[0.2em] text-muted-foreground/80 uppercase">
+              SI <span className="text-muted-foreground/50">/</span>{" "}
+              <span className="font-mono text-[0.68rem] tracking-normal">01</span>
+            </p>
+            <div className="rule-line mt-4 w-2/3" />
+            <p className="mt-4 text-[0.72rem] leading-[1.5] tracking-[0.18em] text-muted-foreground/70 uppercase">
+              Signal
               <br />
-              OBSERVATORY
+              Observatory
             </p>
           </div>
 
           <div className="md:col-span-10">
-            <p className="label-mono">Signal Intelligence</p>
+            <p className="text-[0.78rem] tracking-[0.1em] text-muted-foreground">Signal Intelligence</p>
             <h1 className="mt-8 max-w-3xl text-[2.6rem] leading-[1.04] tracking-[-0.03em] text-foreground sm:text-6xl lg:text-[4.5rem]">
               Turn signals into
               <br />
@@ -40,19 +43,17 @@ export function Hero() {
               </MagneticLink>
             </div>
 
-            <div className="mt-16 flex flex-wrap items-center gap-2">
+            <div className="mt-16 flex flex-wrap items-center gap-2.5">
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="group inline-flex cursor-default items-center gap-2 border border-border px-3 py-1.5 font-mono text-[0.7rem] tracking-[0.1em] text-muted-foreground transition-all duration-300 hover:-translate-y-[2px] hover:border-border-strong hover:bg-secondary/50 hover:text-foreground"
+                  className="inline-flex cursor-default items-center rounded-full border border-border bg-surface/40 px-4 py-1.5 text-[0.75rem] tracking-[0.04em] text-muted-foreground transition-colors duration-300 hover:border-border-strong hover:bg-surface/70 hover:text-foreground"
                 >
                   {tag}
-                  <span className="text-signal opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    ↗
-                  </span>
                 </span>
               ))}
             </div>
+
           </div>
         </div>
       </div>
