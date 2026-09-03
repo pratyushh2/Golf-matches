@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from "react";
+import { PipelineVisual } from "./PipelineVisual";
 
 const stages = [
-  { n: "01", label: "Input", copy: "Upload a WAV or IQ signal." },
-  { n: "02", label: "Detect", copy: "Identify the signal structure and characteristics." },
-  { n: "03", label: "Preprocess", copy: "Prepare the signal for reliable analysis." },
-  { n: "04", label: "DSP", copy: "Apply digital signal processing to reveal useful patterns." },
-  { n: "05", label: "Synchronize", copy: "Align the signal for consistent analysis." },
-  { n: "06", label: "Features", copy: "Extract measurable characteristics from the signal." },
-  { n: "07", label: "AI", copy: "Use learned patterns to classify the signal." },
-  { n: "08", label: "Result", copy: "Return a classification and supporting signal insights." },
+  { n: "01", label: "Ingest", copy: "Retrieve 10-K filings from SEC EDGAR." },
+  { n: "02", label: "Extract", copy: "Pull Item 1A Risk Factors and Item 3 Legal Proceedings." },
+  { n: "03", label: "Chunk", copy: "Split filing text into semantic chunks." },
+  { n: "04", label: "Embed", copy: "Generate local embeddings for semantic retrieval." },
+  { n: "05", label: "Index", copy: "Store filing vectors and metadata in ChromaDB." },
+  { n: "06", label: "Retrieve", copy: "Find the most relevant filing context for a question." },
+  { n: "07", label: "Analyze", copy: "Generate an evidence-grounded answer using Groq." },
+  { n: "08", label: "Insight", copy: "Return the answer with supporting filing sources." },
 ];
 
 export function Pipeline() {
@@ -51,40 +52,15 @@ export function Pipeline() {
     <section id="how-it-works" ref={sectionRef} className="relative h-[420svh]">
       <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden">
         <div className="mx-auto w-full max-w-6xl px-6">
-          {/* orbital arc */}
-          <div
-            className="pointer-events-none absolute top-1/2 -right-[24vh] hidden -translate-y-1/2 lg:block"
-            style={{ transform: `translateY(-50%) rotate(${p * 180 - 90}deg)` }}
-          >
-            <svg width="640" height="640" viewBox="0 0 640 640" className="opacity-70">
-              <circle
-                cx="320"
-                cy="320"
-                r="300"
-                fill="none"
-                stroke="var(--border)"
-                strokeWidth="1"
-                strokeDasharray="940 1885"
-              />
-              <circle
-                cx="320"
-                cy="320"
-                r="240"
-                fill="none"
-                stroke="var(--border)"
-                strokeWidth="1"
-                strokeDasharray="4 10"
-                opacity="0.6"
-              />
-              <circle cx="620" cy="320" r="4" fill="var(--signal)" />
-              <circle cx="620" cy="320" r="12" fill="none" stroke="var(--signal)" strokeWidth="1" opacity="0.35" />
-            </svg>
+          {/* filing transformation visual */}
+          <div className="pointer-events-none absolute top-1/2 -right-[6vw] hidden h-[68vh] w-[38vh] -translate-y-1/2 opacity-60 lg:block">
+            <PipelineVisual active={active} p={p} />
           </div>
 
           <div className="relative">
             <p className="label-mono">Process</p>
             <h2 className="mt-6 text-3xl tracking-[-0.02em] sm:text-4xl">How it works</h2>
-            <p className="mt-3 text-muted-foreground">From raw signal to interpretable insight.</p>
+            <p className="mt-3 text-muted-foreground">From filing to evidence-backed insight.</p>
 
             {/* continuous timeline */}
             <div className="relative mt-14 hidden md:block">
