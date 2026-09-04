@@ -18,6 +18,8 @@ export type ImagesBadgeProps = {
   hoverTranslateY?: number;
   hoverSpread?: number;
   hoverRotation?: number;
+  /** Optional external hover state (e.g. hovering the whole card). */
+  hovered?: boolean;
 };
 
 const spring = { type: "spring" as const, stiffness: 320, damping: 26, mass: 0.7 };
@@ -40,11 +42,12 @@ export function ImagesBadge({
   hoverTranslateY = 74,
   hoverSpread = 58,
   hoverRotation = 11,
+  hovered: hoveredProp,
 }: ImagesBadgeProps) {
   const [hovered, setHovered] = useState(false);
   const reduced = usePrefersReducedMotion();
   const docs = images.slice(0, 3);
-  const on = hovered && !reduced;
+  const on = (hoveredProp ?? hovered) && !reduced;
 
   const w = folderSize;
   const h = folderSize * 0.72;
