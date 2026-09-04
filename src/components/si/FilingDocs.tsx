@@ -9,7 +9,7 @@ type DocProps = {
   label?: string;
 };
 
-function Lines({ count, highlight }: { count: number; highlight?: number }) {
+function Lines({ count, highlight }: { count: number; highlight?: number | undefined }) {
   return (
     <div className="mt-1 space-y-[3px]">
       {Array.from({ length: count }).map((_, i) => (
