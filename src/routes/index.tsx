@@ -1,25 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ThemeProvider } from "@/lib/theme";
 import { ParticleField } from "@/components/si/ParticleField";
-import { Header, Footer, MagneticLink } from "@/components/si/Chrome";
+import { Header, Footer } from "@/components/si/Chrome";
 import { Hero } from "@/components/si/Hero";
 import { Pipeline } from "@/components/si/Pipeline";
 import { Capabilities } from "@/components/si/Capabilities";
-import { ResultPreview } from "@/components/si/ResultPreview";
+import { FilingChat } from "@/components/si/FilingChat";
+import { filingRange, findCompany } from "@/lib/companies";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Signal Intelligence — Turn signals into intelligence" },
+      { title: "Filing Intelligence — Turn filings into intelligence" },
       {
         name: "description",
         content:
-          "Automated signal analysis, characterization and AI-powered classification for WAV and IQ signal files.",
+          "Automated extraction, analysis, and AI-powered answers from SEC 10-K filings: risk factors, legal proceedings and year-over-year risk changes.",
       },
-      { property: "og:title", content: "Signal Intelligence — Turn signals into intelligence" },
+      { property: "og:title", content: "Filing Intelligence — Turn filings into intelligence" },
       {
         property: "og:description",
-        content: "Automated signal analysis, characterization and AI-powered classification for WAV and IQ files.",
+        content: "AI-powered analysis of SEC 10-K filings with evidence-backed answers and source citations.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -29,6 +30,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const apple = findCompany("AAPL")!;
+
   return (
     <ThemeProvider>
       <div className="relative min-h-screen">
@@ -36,18 +39,30 @@ function Index() {
         <Header />
         <main>
           <Hero />
-          <Pipeline />
           <Capabilities />
-          <ResultPreview />
+          <Pipeline />
 
           <section id="analyze" className="mx-auto max-w-6xl px-6 pb-40">
-            <div className="border border-border bg-background/60 px-8 py-20 text-center backdrop-blur-sm">
-              <p className="label-mono">Next step</p>
-              <h2 className="mx-auto mt-6 max-w-lg text-3xl tracking-[-0.02em] sm:text-4xl">
-                Ready to analyze a signal?
-              </h2>
-              <div className="mt-10 flex justify-center">
-                <MagneticLink href="#analyze">Analyze a signal</MagneticLink>
+            <p className="label-mono">Company analysis</p>
+            <div className="mt-10 grid gap-14 border border-border bg-background/60 p-8 backdrop-blur-sm md:grid-cols-12 md:p-12">
+              <div className="md:col-span-4">
+                <h2 className="text-2xl tracking-[-0.02em] sm:text-3xl">
+                  {apple.name} <span className="text-muted-foreground">({apple.ticker})</span>
+                </h2>
+                <p className="mt-3 text-sm text-muted-foreground">{filingRange(apple)}</p>
+                <span className="mt-8 inline-flex items-center gap-2 border border-border px-3 py-1.5 font-mono text-[0.62rem] tracking-[0.14em] text-muted-foreground uppercase">
+                  <span className="h-1.5 w-1.5 rounded-full bg-signal" /> Filing data available
+                </span>
+                <div className="rule-line mt-8" />
+                <p className="mt-6 max-w-[30ch] text-sm leading-relaxed text-muted-foreground">
+                  A focused research workspace: ask a question, read the answer, follow the filing sources.
+                </p>
+              </div>
+              <div className="md:col-span-7 md:col-start-6">
+                <h3 className="text-xl tracking-[-0.01em]">What would you like to know?</h3>
+                <div className="mt-8">
+                  <FilingChat company={apple} shortName="Apple" />
+                </div>
               </div>
             </div>
           </section>
