@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CompanyTickerRouteImport } from './routes/company.$ticker'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CompanyTickerRoute = CompanyTickerRouteImport.update({
+  id: '/company/$ticker',
+  path: '/company/$ticker',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/company/$ticker': typeof CompanyTickerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/company/$ticker': typeof CompanyTickerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/company/$ticker': typeof CompanyTickerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/company/$ticker'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/company/$ticker'
+  id: '__root__' | '/' | '/company/$ticker'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CompanyTickerRoute: typeof CompanyTickerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/company/$ticker': {
+      id: '/company/$ticker'
+      path: '/company/$ticker'
+      fullPath: '/company/$ticker'
+      preLoaderRoute: typeof CompanyTickerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CompanyTickerRoute: CompanyTickerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

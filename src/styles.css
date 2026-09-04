@@ -152,3 +152,24 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+@keyframes si-scan {
+  0% {
+    top: 6%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  88% {
+    opacity: 0.9;
+  }
+  100% {
+    top: 92%;
+    opacity: 0;
+  }
+}
+
+.si-scan {
+  animation: si-scan 7s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
