@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { PipelineVisual } from "./PipelineVisual";
 
 const stages = [
-  { n: "01", label: "Ingest", copy: "Retrieve 10-K filings from SEC EDGAR." },
-  { n: "02", label: "Extract", copy: "Pull Item 1A Risk Factors and Item 3 Legal Proceedings." },
-  { n: "03", label: "Chunk", copy: "Split filing text into semantic chunks." },
-  { n: "04", label: "Embed", copy: "Generate local embeddings for semantic retrieval." },
-  { n: "05", label: "Index", copy: "Store filing vectors and metadata in ChromaDB." },
-  { n: "06", label: "Retrieve", copy: "Find the most relevant filing context for a question." },
-  { n: "07", label: "Analyze", copy: "Generate an evidence-grounded answer using Groq." },
-  { n: "08", label: "Insight", copy: "Return the answer with supporting filing sources." },
+  { n: "01", label: "Discover", copy: "Learn how golf, member draws, prizes, and charity support come together." },
+  { n: "02", label: "Join", copy: "Create an account when sign-up becomes available." },
+  { n: "03", label: "Choose", copy: "Review available membership options before continuing to secure checkout." },
+  { n: "04", label: "Play", copy: "Keep enjoying your golf while maintaining your latest scores." },
+  { n: "05", label: "Qualify", copy: "Your latest eligible scores can be used for relevant member draws." },
+  { n: "06", label: "Enter", copy: "Participate in available draws through your member account." },
+  { n: "07", label: "Verify", copy: "Draw outcomes pass through an eligibility and winner verification step." },
+  { n: "08", label: "Give", copy: "Part of the subscription contribution supports the charitable mission." },
 ];
 
 export function Pipeline() {
@@ -52,15 +52,14 @@ export function Pipeline() {
     <section id="how-it-works" ref={sectionRef} className="relative h-[420svh]">
       <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden">
         <div className="mx-auto w-full max-w-6xl px-6">
-          {/* filing transformation visual */}
           <div className="pointer-events-none absolute top-1/2 -right-[6vw] hidden h-[68vh] w-[38vh] -translate-y-1/2 opacity-60 lg:block">
             <PipelineVisual active={active} p={p} />
           </div>
 
           <div className="relative">
-            <p className="label-mono">Process</p>
+            <p className="label-mono">Your journey</p>
             <h2 className="mt-6 text-3xl tracking-[-0.02em] sm:text-4xl">How it works</h2>
-            <p className="mt-3 text-muted-foreground">From filing to evidence-backed insight.</p>
+            <p className="mt-3 text-muted-foreground">From joining to playing with purpose.</p>
 
             {/* continuous timeline */}
             <div className="relative mt-14 hidden md:block">

@@ -51,16 +51,16 @@ export function Header() {
   const { mode, toggle } = useTheme();
   const links = [
     { label: "Home", href: "/#top" },
-    { label: "Analyze", href: "/#analyze" },
-    { label: "History", href: "/#uncover" },
+    { label: "Features", href: "/#features" },
     { label: "How it works", href: "/#how-it-works" },
+    { label: "Membership", href: "/#membership" },
   ];
 
   return (
     <header className="fixed top-0 left-0 z-50 w-full border-b border-border/60 bg-background/70 backdrop-blur-md transition-colors duration-500">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link to="/" className="text-[0.95rem] tracking-tight text-foreground">
-          Filing Intelligence
+          Digital Heroes
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
@@ -82,10 +82,10 @@ export function Header() {
             {mode === "dark" ? <Sun className="h-[15px] w-[15px]" /> : <Moon className="h-[15px] w-[15px]" />}
           </button>
           <a
-            href="/#analyze"
+            href="/#membership"
             className="hover-arrow inline-flex items-center gap-2 border border-border px-3 py-1.5 text-[0.8rem] text-foreground transition-colors hover:border-border-strong hover:bg-secondary/60"
           >
-            Explore filings <span className="arrow font-mono text-signal">→</span>
+            Get started <span className="arrow font-mono text-signal">→</span>
           </a>
         </div>
       </div>
@@ -95,19 +95,19 @@ export function Header() {
 
 export function Footer() {
   const links = [
-    { label: "Analyze", href: "/#analyze" },
+    { label: "Features", href: "/#features" },
     { label: "How it works", href: "/#how-it-works" },
-    { label: "Capabilities", href: "/#uncover" },
-    { label: "GitHub", href: "https://github.com" },
+    { label: "Membership", href: "/#membership" },
+    { label: "Charity", href: "/#impact" },
   ];
   return (
     <footer className="border-t border-border/70">
       <div className="mx-auto max-w-6xl px-6 py-20">
         <div className="flex flex-col justify-between gap-12 md:flex-row">
           <div className="max-w-sm">
-            <p className="text-[0.95rem] text-foreground">Filing Intelligence</p>
+            <p className="text-[0.95rem] text-foreground">Digital Heroes</p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              AI-powered analysis of SEC filings and evidence-backed company intelligence.
+              A golf membership experience built around play, prizes, and positive charitable impact.
             </p>
           </div>
           <div className="flex flex-col gap-3">
@@ -124,8 +124,8 @@ export function Footer() {
         </div>
         <div className="rule-line mt-16" />
         <div className="mt-6 flex flex-col gap-2 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
-          <span className="font-mono">© 2026 Filing Intelligence</span>
-          <span>Answers shown on this page are demo responses, not live filing analysis.</span>
+          <span className="font-mono">© 2026 Digital Heroes</span>
+          <span>Subscriptions, draws, and account services are not yet connected.</span>
         </div>
       </div>
     </footer>
