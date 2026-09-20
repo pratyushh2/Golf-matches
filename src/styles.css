@@ -173,3 +173,21 @@
 .si-scan {
   animation: si-scan 7s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+@keyframes golf-ball-flight {
+  0%,
+  12% {
+    transform: translate(0, 0);
+  }
+  48% {
+    transform: translate(152px, -205px);
+  }
+  88%,
+  100% {
+    transform: translate(284px, -93px);
+  }
+}
+
+.golf-ball-flight {
+  animation: golf-ball-flight 6s cubic-bezier(0.45, 0.05, 0.3, 1) infinite;
+}
