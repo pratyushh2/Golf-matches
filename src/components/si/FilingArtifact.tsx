@@ -13,7 +13,11 @@ export function FilingArtifact({ className = "" }: { className?: string }) {
 
   return (
     <div aria-hidden className={`relative ${className}`}>
-      <svg viewBox="0 0 340 460" className="h-full w-full text-foreground" preserveAspectRatio="xMidYMid meet">
+      <svg
+        viewBox="0 0 340 460"
+        className="h-full w-full text-foreground"
+        preserveAspectRatio="xMidYMid meet"
+      >
         <rect
           x="16"
           y="12"
@@ -24,7 +28,14 @@ export function FilingArtifact({ className = "" }: { className?: string }) {
           stroke="var(--border-strong)"
           strokeWidth="1"
         />
-        <text x="34" y="52" className="font-mono" fontSize="13" letterSpacing="3" fill="var(--signal)">
+        <text
+          x="34"
+          y="52"
+          className="font-mono"
+          fontSize="13"
+          letterSpacing="3"
+          fill="var(--signal)"
+        >
           10-K
         </text>
         <text x="34" y="72" fontSize="9" letterSpacing="2.4" fill="currentColor" opacity="0.5">
@@ -32,7 +43,15 @@ export function FilingArtifact({ className = "" }: { className?: string }) {
         </text>
         <line x1="34" y1="86" x2="306" y2="86" stroke="var(--border-strong)" strokeWidth="1" />
 
-        <text x="34" y="118" className="font-mono" fontSize="8" letterSpacing="2.2" fill="var(--signal)" opacity="0.9">
+        <text
+          x="34"
+          y="118"
+          className="font-mono"
+          fontSize="8"
+          letterSpacing="2.2"
+          fill="var(--signal)"
+          opacity="0.9"
+        >
           ITEM 1A
         </text>
         <text x="34" y="134" fontSize="10.5" letterSpacing="0.4" fill="currentColor" opacity="0.85">
@@ -42,7 +61,15 @@ export function FilingArtifact({ className = "" }: { className?: string }) {
         <rect x="34" y="200" width="196" height="6" fill="var(--signal)" opacity="0.28" />
         {[216, 226, 236].map((y, i) => line(y, 240 - i * 22))}
 
-        <text x="34" y="278" className="font-mono" fontSize="8" letterSpacing="2.2" fill="var(--signal)" opacity="0.9">
+        <text
+          x="34"
+          y="278"
+          className="font-mono"
+          fontSize="8"
+          letterSpacing="2.2"
+          fill="var(--signal)"
+          opacity="0.9"
+        >
           ITEM 3
         </text>
         <text x="34" y="294" fontSize="10.5" letterSpacing="0.4" fill="currentColor" opacity="0.85">

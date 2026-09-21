@@ -103,7 +103,9 @@ export function CompanySearch() {
                 }`}
               >
                 <span className="text-[0.9rem] text-foreground">{c.name}</span>
-                <span className="font-mono text-[0.7rem] tracking-[0.12em] text-signal">{c.ticker}</span>
+                <span className="font-mono text-[0.7rem] tracking-[0.12em] text-signal">
+                  {c.ticker}
+                </span>
               </button>
             </li>
           ))}

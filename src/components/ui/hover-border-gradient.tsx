@@ -60,7 +60,12 @@ export function HoverBorderGradient({
         containerClassName,
       )}
     >
-      <div className={cn("relative z-10 w-full rounded-full bg-background/70 backdrop-blur-sm", className)}>
+      <div
+        className={cn(
+          "relative z-10 w-full rounded-full bg-background/70 backdrop-blur-sm",
+          className,
+        )}
+      >
         {children}
       </div>
       <motion.div

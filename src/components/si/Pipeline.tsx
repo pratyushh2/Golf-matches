@@ -2,14 +2,34 @@ import { useEffect, useRef, useState } from "react";
 import { PipelineVisual } from "./PipelineVisual";
 
 const stages = [
-  { n: "01", label: "Discover", copy: "Learn how golf, member draws, prizes, and charity support come together." },
+  {
+    n: "01",
+    label: "Discover",
+    copy: "Learn how golf, member draws, prizes, and charity support come together.",
+  },
   { n: "02", label: "Join", copy: "Create an account when sign-up becomes available." },
-  { n: "03", label: "Choose", copy: "Review available membership options before continuing to secure checkout." },
+  {
+    n: "03",
+    label: "Choose",
+    copy: "Review available membership options before continuing to secure checkout.",
+  },
   { n: "04", label: "Play", copy: "Keep enjoying your golf while maintaining your latest scores." },
-  { n: "05", label: "Qualify", copy: "Your latest eligible scores can be used for relevant member draws." },
+  {
+    n: "05",
+    label: "Qualify",
+    copy: "Your latest eligible scores can be used for relevant member draws.",
+  },
   { n: "06", label: "Enter", copy: "Participate in available draws through your member account." },
-  { n: "07", label: "Verify", copy: "Draw outcomes pass through an eligibility and winner verification step." },
-  { n: "08", label: "Give", copy: "Part of the subscription contribution supports the charitable mission." },
+  {
+    n: "07",
+    label: "Verify",
+    copy: "Draw outcomes pass through an eligibility and winner verification step.",
+  },
+  {
+    n: "08",
+    label: "Give",
+    copy: "Part of the subscription contribution supports the charitable mission.",
+  },
 ];
 
 export function Pipeline() {
@@ -81,7 +101,9 @@ export function Pipeline() {
                     >
                       <span
                         className="font-mono text-[0.68rem] tracking-[0.14em] transition-colors duration-500 ease-out"
-                        style={{ color: i === active ? "var(--signal)" : "var(--muted-foreground)" }}
+                        style={{
+                          color: i === active ? "var(--signal)" : "var(--muted-foreground)",
+                        }}
                       >
                         {s.n}
                       </span>
@@ -121,9 +143,15 @@ export function Pipeline() {
             <div className="mt-12 grid gap-8 md:grid-cols-12">
               <div className="md:col-span-5">
                 <div key={active} className="animate-fade-in">
-                  <p className="font-mono text-[0.7rem] tracking-[0.16em] text-signal">{stages[active]!.n}</p>
-                  <h3 className="mt-4 text-2xl tracking-[-0.02em] sm:text-3xl">{stages[active]!.label}</h3>
-                  <p className="mt-4 max-w-sm leading-relaxed text-muted-foreground">{stages[active]!.copy}</p>
+                  <p className="font-mono text-[0.7rem] tracking-[0.16em] text-signal">
+                    {stages[active]!.n}
+                  </p>
+                  <h3 className="mt-4 text-2xl tracking-[-0.02em] sm:text-3xl">
+                    {stages[active]!.label}
+                  </h3>
+                  <p className="mt-4 max-w-sm leading-relaxed text-muted-foreground">
+                    {stages[active]!.copy}
+                  </p>
                 </div>
               </div>
 

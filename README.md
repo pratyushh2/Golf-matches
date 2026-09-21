@@ -295,7 +295,6 @@ Structure:
 
              WAV     IQ     DSP     AI insights
 
-
 But make the composition much more visually interesting than this simple wireframe.
 
 8. HERO HEADLINE
@@ -339,9 +338,9 @@ It should look like an oscilloscope / waveform visualization.
 For example:
 
       ╱╲
-_____/  \____    __
-             ╲__/  ╲____
 
+**_**/ \_**_ __
+╲**/ ╲____
 
 But make it much more sophisticated.
 
@@ -460,9 +459,8 @@ Use a large premium button or compact upload-style CTA.
 Suggested:
 
 ┌───────────────────────────────┐
-│ Analyze a signal           →  │
+│ Analyze a signal → │
 └───────────────────────────────┘
-
 
 It should have:
 
@@ -490,8 +488,7 @@ Do not navigate to a separate page.
 
 Under the hero CTA:
 
-WAV     IQ     DSP     AI insights
-
+WAV IQ DSP AI insights
 
 But make them subtle technical metadata pills.
 
@@ -555,22 +552,20 @@ Create a horizontal sequence:
 
 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08
 
-
 The numbers are process steps, not metrics.
 
 This is allowed because they represent the actual sequence.
 
 Use the stages:
 
-01  Input
-02  Detect
-03  Preprocess
-04  DSP
-05  Synchronize
-06  Features
-07  AI
-08  Result
-
+01 Input
+02 Detect
+03 Preprocess
+04 DSP
+05 Synchronize
+06 Features
+07 AI
+08 Result
 
 Keep the labels short in the strip.
 
@@ -587,28 +582,27 @@ The active stage should move through the sequence.
 Example:
 
 01 Input
-   ↓
+↓
 
 02 Detect
-   ↓
+↓
 
 03 Preprocess
-   ↓
+↓
 
 04 DSP
-   ↓
+↓
 
 05 Synchronize
-   ↓
+↓
 
 06 Features
-   ↓
+↓
 
 07 AI
-   ↓
+↓
 
 08 Result
-
 
 The active stage becomes slightly brighter.
 
@@ -647,16 +641,16 @@ It represents the signal moving through the analysis system.
 Conceptually:
 
                CONTENT
-                  
+
         ╭────────────────
       ╱
     ╱
-   │
-   │       ●
-    ╲
-      ╲
-        ╰────────────────
 
+│
+│ ●
+╲
+╲
+╰────────────────
 
 The signal particle travels along the arc.
 
@@ -761,7 +755,6 @@ Frequency spectrum
 
 View detailed analysis →
 
-
 Do NOT put fake percentages.
 
 Do NOT put fake MHz/kHz values.
@@ -827,7 +820,6 @@ Modular
 ────────────────
 Each processing stage
 can evolve independently.
-
 
 Keep these visually minimal.
 
@@ -926,7 +918,6 @@ Example:
 Reach Us →
 Feedback →
 GitHub →
-
 
 Small arrow movement on hover.
 
@@ -1044,31 +1035,27 @@ Turn signals into intelligence.
 
 WAV · IQ · DSP
 
-
 How it works
 
 01 Input
-   ↓
+↓
 02 Detect
-   ↓
+↓
 03 Preprocess
-   ↓
+↓
 04 DSP
-   ↓
+↓
 05 Synchronize
-   ↓
+↓
 06 Features
-   ↓
+↓
 07 AI
-   ↓
+↓
 08 Result
-
 
 [ Analyze a signal → ]
 
-
 Footer
-
 
 The content must remain readable and usable.
 
@@ -1109,21 +1096,20 @@ signal traces + data points + instrumentation + typography + restrained motion
 The page should communicate this:
 
 RAW SIGNAL
-     ↓
+↓
 DETECTION
-     ↓
+↓
 PREPROCESSING
-     ↓
+↓
 DSP
-     ↓
+↓
 SYNCHRONIZATION
-     ↓
+↓
 FEATURES
-     ↓
+↓
 AI
-     ↓
+↓
 INTERPRETABLE RESULT
-
 
 The user should understand the product without reading a technical document.
 
@@ -1134,62 +1120,61 @@ The visual system itself should explain it.
 The final page should be:
 
 ┌──────────────────────────────────────────────┐
-│ Signal Intelligence       Analyze History ☼ │
+│ Signal Intelligence Analyze History ☼ │
 ├──────────────────────────────────────────────┤
-│                                              │
-│        animated signal / data field         │
-│                                              │
-│          Signal Intelligence                │
-│                                              │
-│       Turn signals into intelligence.       │
-│                                              │
-│   Automated signal analysis, characterization│
-│       and AI-powered classification.        │
-│                                              │
-│       [ Analyze a signal → ]                │
-│             How it works →                  │
-│                                              │
-│          WAV · IQ · DSP · AI insights       │
-│                                              │
+│ │
+│ animated signal / data field │
+│ │
+│ Signal Intelligence │
+│ │
+│ Turn signals into intelligence. │
+│ │
+│ Automated signal analysis, characterization│
+│ and AI-powered classification. │
+│ │
+│ [ Analyze a signal → ] │
+│ How it works → │
+│ │
+│ WAV · IQ · DSP · AI insights │
+│ │
 ├──────────────────────────────────────────────┤
-│                                              │
-│               HOW IT WORKS                   │
-│                                              │
-│     rotating semicircle + signal particle   │
-│                                              │
-│  01 → 02 → 03 → 04 → 05 → 06 → 07 → 08    │
-│                                              │
-│       scroll-driven explanation             │
-│                                              │
+│ │
+│ HOW IT WORKS │
+│ │
+│ rotating semicircle + signal particle │
+│ │
+│ 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 │
+│ │
+│ scroll-driven explanation │
+│ │
 ├──────────────────────────────────────────────┤
-│                                              │
-│        AUTOMATED   EXPLAINABLE               │
-│        FAST        MODULAR                   │
-│                                              │
-│      instrument-style readouts              │
-│                                              │
+│ │
+│ AUTOMATED EXPLAINABLE │
+│ FAST MODULAR │
+│ │
+│ instrument-style readouts │
+│ │
 ├──────────────────────────────────────────────┤
-│                                              │
-│           ANALYSIS PREVIEW                  │
-│                                              │
-│        waveform / spectrum /                │
-│             spectrogram                     │
-│                                              │
+│ │
+│ ANALYSIS PREVIEW │
+│ │
+│ waveform / spectrum / │
+│ spectrogram │
+│ │
 ├──────────────────────────────────────────────┤
-│                                              │
-│          READY TO ANALYZE?                  │
-│                                              │
-│          [ Analyze a signal → ]             │
-│                                              │
+│ │
+│ READY TO ANALYZE? │
+│ │
+│ [ Analyze a signal → ] │
+│ │
 ├──────────────────────────────────────────────┤
-│                                              │
-│ Signal Intelligence                         │
-│                                              │
+│ │
+│ Signal Intelligence │
+│ │
 │ Reach Us · Feedback · GitHub · How it works │
-│                                              │
-│ © 2026 Signal Intelligence                  │
+│ │
+│ © 2026 Signal Intelligence │
 └──────────────────────────────────────────────┘
-
 
 FINAL INSTRUCTION
 

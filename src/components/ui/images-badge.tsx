@@ -99,7 +99,12 @@ export function ImagesBadge({
         {/* folder front */}
         <motion.div
           className="absolute inset-x-0 bottom-0 rounded-[6px] border border-border-strong bg-muted/90"
-          style={{ height: h * 0.82, zIndex: 20, transformOrigin: "bottom center", transformPerspective: 640 }}
+          style={{
+            height: h * 0.82,
+            zIndex: 20,
+            transformOrigin: "bottom center",
+            transformPerspective: 640,
+          }}
           animate={{ rotateX: on ? -34 : 0 }}
           transition={reduced ? { duration: 0 } : spring}
         >
@@ -113,7 +118,12 @@ export function ImagesBadge({
 
   if (href) {
     return (
-      <a href={href} target={target} onClick={onSelect} className="block focus-visible:outline-none">
+      <a
+        href={href}
+        target={target}
+        onClick={onSelect}
+        className="block focus-visible:outline-none"
+      >
         {content}
       </a>
     );

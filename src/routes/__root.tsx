@@ -81,7 +81,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Golf membership, prize draws, and charitable giving." },
       { name: "author", content: "Digital Heroes" },
       { property: "og:title", content: "Digital Heroes" },
-      { property: "og:description", content: "Golf membership, prize draws, and charitable giving." },
+      {
+        property: "og:description",
+        content: "Golf membership, prize draws, and charitable giving.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

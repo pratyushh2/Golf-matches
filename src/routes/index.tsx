@@ -19,7 +19,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Digital Heroes — Golf that gives back" },
       {
         property: "og:description",
-        content: "Discover a golf membership experience built around play, prize draws, and charitable impact.",
+        content:
+          "Discover a golf membership experience built around play, prize draws, and charitable impact.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -45,7 +46,8 @@ function Index() {
               <div className="md:col-span-7 md:col-start-5">
                 <h2 className="text-3xl sm:text-4xl">A contribution beyond the course.</h2>
                 <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">
-                  Part of the subscription contribution is intended to support charity. Live charity partners and contribution information will appear here once connected.
+                  Part of the subscription contribution is intended to support charity. Live charity
+                  partners and contribution information will appear here once connected.
                 </p>
               </div>
             </div>

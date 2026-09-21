@@ -8,14 +8,17 @@ export function Hero() {
       <div className="relative mx-auto w-full max-w-6xl px-6">
         <div className="grid items-center gap-12 md:grid-cols-12">
           <div className="md:col-span-7">
-            <p className="text-[0.78rem] tracking-[0.1em] text-muted-foreground">Golf that gives back</p>
+            <p className="text-[0.78rem] tracking-[0.1em] text-muted-foreground">
+              Golf that gives back
+            </p>
             <h1 className="mt-8 max-w-3xl text-[2.6rem] leading-[1.04] tracking-[-0.03em] text-foreground sm:text-6xl lg:text-[4.2rem]">
               Play your game.
               <br />
               <span className="text-muted-foreground">Make it count.</span>
             </h1>
             <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground">
-              Digital Heroes brings golf scores, member draws, prizes, and charitable giving into one considered experience.
+              Digital Heroes brings golf scores, member draws, prizes, and charitable giving into
+              one considered experience.
             </p>
 
             <div id="join" className="mt-12 flex flex-wrap items-center gap-5">
@@ -24,7 +27,11 @@ export function Hero() {
                   Explore membership <ArrowRight aria-hidden />
                 </a>
               </Button>
-              <Button asChild variant="ghost" className="text-muted-foreground hover:bg-transparent hover:text-foreground">
+              <Button
+                asChild
+                variant="ghost"
+                className="text-muted-foreground hover:bg-transparent hover:text-foreground"
+              >
                 <a href="#how-it-works">See how it works</a>
               </Button>
             </div>

@@ -1,0 +1,115 @@
+import { supabase } from "@/lib/supabase";
+import { getAuthenticatedUser } from "@/lib/profileService";
+
+export interface Plan {
+  code: string;
+  name: string;
+  interval: "monthly" | "yearly";
+  price_cents: number;
+  currency: string;
+}
+
+export interface Subscription {
+  id: string;
+  user_id: string;
+  plan_code: string | null;
+  interval: "monthly" | "yearly" | null;
+  status: "inactive" | "active" | "cancelled" | "lapsed";
+  amount_cents: number;
+  currency: string;
+  current_period_start: string | null;
+  current_period_end: string | null;
+  cancel_at_period_end: boolean;
+  provider: string;
+  is_test: boolean;
+}
+
+/**
+ * Payment abstraction. `SimulatedProvider` is what ships; a StripeProvider can
+ * be added later by implementing this interface and calling an Edge Function
+ * that holds the secret key. No frontend component changes needed.
+ */
+export interface PaymentProvider {
+  readonly id: string;
+  readonly isLive: boolean;
+  /** Returns a provider reference (Stripe: a session/subscription id). */
+  checkout(plan: Plan): Promise<{ providerRef: string | null }>;
+}
+
+export const SimulatedProvider: PaymentProvider = {
+  id: "simulated",
+  isLive: false,
+  async checkout() {
+    // No card is charged. We do NOT fabricate a payment confirmation —
+    // the record is stamped is_test=true and surfaced as such in the UI.
+    return { providerRef: null };
+  },
+};
+
+let provider: PaymentProvider = SimulatedProvider;
+export const setPaymentProvider = (p: PaymentProvider) => {
+  provider = p;
+};
+export const getPaymentProvider = () => provider;
+
+export async function listPlans(): Promise<Plan[]> {
+  const { data, error } = await supabase
+    .from("plans")
+    .select("code,name,interval,price_cents,currency")
+    .eq("is_active", true)
+    .order("price_cents");
+  if (error) throw new Error(error.message);
+  return (data ?? []) as Plan[];
+}
+
+export async function getMySubscription(): Promise<Subscription | null> {
+  const user = await getAuthenticatedUser();
+  const { data, error } = await supabase
+    .from("subscriptions")
+    .select("*")
+    .eq("user_id", user.id)
+    .order("current_period_end", { ascending: false, nullsFirst: false })
+    .limit(1)
+    .maybeSingle();
+  if (error) throw new Error(error.message);
+  return (data as Subscription | null) ?? null;
+}
+
+export async function subscribe(plan: Plan): Promise<Subscription> {
+  const { providerRef } = await provider.checkout(plan);
+  let res = await supabase.rpc("activate_subscription", {
+    p_plan_code: plan.code,
+    p_provider_ref: providerRef,
+  });
+  if (
+    res.error &&
+    (res.error.message.includes("function") ||
+      res.error.message.includes("parameter") ||
+      res.error.code === "42883")
+  ) {
+    res = await supabase.rpc("activate_subscription", {
+      plan_code: plan.code,
+      provider_ref: providerRef,
+    });
+  }
+  if (res.error) {
+    if (res.error.message.includes("plan_not_available"))
+      throw new Error("That plan is no longer available.");
+    if (res.error.message.includes("account_deactivated"))
+      throw new Error("Your account is deactivated.");
+    throw new Error(res.error.message);
+  }
+  return res.data as Subscription;
+}
+
+export async function cancelSubscription(): Promise<void> {
+  const { error } = await supabase.rpc("cancel_subscription");
+  if (error) throw new Error(error.message);
+}
+
+/** PRD §04: real-time status check used to gate features. */
+export function isSubscriptionActive(s: Subscription | null): boolean {
+  if (!s || s.status !== "active") return false;
+  if (!s.current_period_end) return false;
+  return new Date(s.current_period_end).getTime() > Date.now();
+}

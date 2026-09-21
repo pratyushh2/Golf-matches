@@ -10,11 +10,65 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as CharityRouteImport } from './routes/charity'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DrawsRouteImport } from './routes/draws'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as ScoresRouteImport } from './routes/scores'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as SubscriptionRouteImport } from './routes/subscription'
+import { Route as WinnersRouteImport } from './routes/winners'
 import { Route as CompanyTickerRouteImport } from './routes/company.$ticker'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CharityRoute = CharityRouteImport.update({
+  id: '/charity',
+  path: '/charity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DrawsRoute = DrawsRouteImport.update({
+  id: '/draws',
+  path: '/draws',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScoresRoute = ScoresRouteImport.update({
+  id: '/scores',
+  path: '/scores',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubscriptionRoute = SubscriptionRouteImport.update({
+  id: '/subscription',
+  path: '/subscription',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WinnersRoute = WinnersRouteImport.update({
+  id: '/winners',
+  path: '/winners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompanyTickerRoute = CompanyTickerRouteImport.update({
@@ -25,27 +79,97 @@ const CompanyTickerRoute = CompanyTickerRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/charity': typeof CharityRoute
+  '/dashboard': typeof DashboardRoute
+  '/draws': typeof DrawsRoute
+  '/login': typeof LoginRoute
+  '/scores': typeof ScoresRoute
+  '/signup': typeof SignupRoute
+  '/subscription': typeof SubscriptionRoute
+  '/winners': typeof WinnersRoute
   '/company/$ticker': typeof CompanyTickerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/charity': typeof CharityRoute
+  '/dashboard': typeof DashboardRoute
+  '/draws': typeof DrawsRoute
+  '/login': typeof LoginRoute
+  '/scores': typeof ScoresRoute
+  '/signup': typeof SignupRoute
+  '/subscription': typeof SubscriptionRoute
+  '/winners': typeof WinnersRoute
   '/company/$ticker': typeof CompanyTickerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/charity': typeof CharityRoute
+  '/dashboard': typeof DashboardRoute
+  '/draws': typeof DrawsRoute
+  '/login': typeof LoginRoute
+  '/scores': typeof ScoresRoute
+  '/signup': typeof SignupRoute
+  '/subscription': typeof SubscriptionRoute
+  '/winners': typeof WinnersRoute
   '/company/$ticker': typeof CompanyTickerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/company/$ticker'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/charity'
+    | '/dashboard'
+    | '/draws'
+    | '/login'
+    | '/scores'
+    | '/signup'
+    | '/subscription'
+    | '/winners'
+    | '/company/$ticker'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/company/$ticker'
-  id: '__root__' | '/' | '/company/$ticker'
+  to:
+    | '/'
+    | '/admin'
+    | '/charity'
+    | '/dashboard'
+    | '/draws'
+    | '/login'
+    | '/scores'
+    | '/signup'
+    | '/subscription'
+    | '/winners'
+    | '/company/$ticker'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/charity'
+    | '/dashboard'
+    | '/draws'
+    | '/login'
+    | '/scores'
+    | '/signup'
+    | '/subscription'
+    | '/winners'
+    | '/company/$ticker'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  CharityRoute: typeof CharityRoute
+  DashboardRoute: typeof DashboardRoute
+  DrawsRoute: typeof DrawsRoute
+  LoginRoute: typeof LoginRoute
+  ScoresRoute: typeof ScoresRoute
+  SignupRoute: typeof SignupRoute
+  SubscriptionRoute: typeof SubscriptionRoute
+  WinnersRoute: typeof WinnersRoute
   CompanyTickerRoute: typeof CompanyTickerRoute
 }
 
@@ -56,6 +180,69 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/charity': {
+      id: '/charity'
+      path: '/charity'
+      fullPath: '/charity'
+      preLoaderRoute: typeof CharityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/draws': {
+      id: '/draws'
+      path: '/draws'
+      fullPath: '/draws'
+      preLoaderRoute: typeof DrawsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scores': {
+      id: '/scores'
+      path: '/scores'
+      fullPath: '/scores'
+      preLoaderRoute: typeof ScoresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/subscription': {
+      id: '/subscription'
+      path: '/subscription'
+      fullPath: '/subscription'
+      preLoaderRoute: typeof SubscriptionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/winners': {
+      id: '/winners'
+      path: '/winners'
+      fullPath: '/winners'
+      preLoaderRoute: typeof WinnersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/company/$ticker': {
@@ -70,6 +257,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  CharityRoute: CharityRoute,
+  DashboardRoute: DashboardRoute,
+  DrawsRoute: DrawsRoute,
+  LoginRoute: LoginRoute,
+  ScoresRoute: ScoresRoute,
+  SignupRoute: SignupRoute,
+  SubscriptionRoute: SubscriptionRoute,
+  WinnersRoute: WinnersRoute,
   CompanyTickerRoute: CompanyTickerRoute,
 }
 export const routeTree = rootRouteImport

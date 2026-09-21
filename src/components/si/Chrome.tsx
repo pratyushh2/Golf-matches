@@ -21,7 +21,10 @@ export function MagneticLink({
   const onMove = (e: React.MouseEvent) => {
     if (reduced || !ref.current) return;
     const r = ref.current.getBoundingClientRect();
-    setT({ x: (e.clientX - (r.left + r.width / 2)) * 0.06, y: (e.clientY - (r.top + r.height / 2)) * 0.12 });
+    setT({
+      x: (e.clientX - (r.left + r.width / 2)) * 0.06,
+      y: (e.clientY - (r.top + r.height / 2)) * 0.12,
+    });
   };
 
   const base =
@@ -54,12 +57,13 @@ export function Header() {
     { label: "Features", href: "/#features" },
     { label: "How it works", href: "/#how-it-works" },
     { label: "Membership", href: "/#membership" },
+    { label: "Charity", href: "/#impact" },
   ];
 
   return (
     <header className="fixed top-0 left-0 z-50 w-full border-b border-border/60 bg-background/70 backdrop-blur-md transition-colors duration-500">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Link to="/" className="text-[0.95rem] tracking-tight text-foreground">
+        <Link to="/" className="text-[0.95rem] tracking-tight text-foreground font-semibold">
           Digital Heroes
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
@@ -73,20 +77,30 @@ export function Header() {
             </a>
           ))}
         </nav>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <button
             onClick={toggle}
             aria-label={mode === "dark" ? "Switch to light theme" : "Switch to dark theme"}
             className="inline-flex h-8 w-8 items-center justify-center rounded-sm text-muted-foreground transition-colors hover:text-foreground"
           >
-            {mode === "dark" ? <Sun className="h-[15px] w-[15px]" /> : <Moon className="h-[15px] w-[15px]" />}
+            {mode === "dark" ? (
+              <Sun className="h-[15px] w-[15px]" />
+            ) : (
+              <Moon className="h-[15px] w-[15px]" />
+            )}
           </button>
-          <a
-            href="/#membership"
-            className="hover-arrow inline-flex items-center gap-2 border border-border px-3 py-1.5 text-[0.8rem] text-foreground transition-colors hover:border-border-strong hover:bg-secondary/60"
+          <Link
+            to="/login"
+            className="text-[0.82rem] text-muted-foreground transition-colors hover:text-foreground px-2 py-1"
           >
-            Get started <span className="arrow font-mono text-signal">→</span>
-          </a>
+            Sign in
+          </Link>
+          <Link
+            to="/dashboard"
+            className="hover-arrow inline-flex items-center gap-1.5 border border-border px-3 py-1.5 text-[0.8rem] text-foreground transition-colors hover:border-border-strong hover:bg-secondary/60"
+          >
+            Dashboard <span className="arrow font-mono text-signal">→</span>
+          </Link>
         </div>
       </div>
     </header>
@@ -99,6 +113,8 @@ export function Footer() {
     { label: "How it works", href: "/#how-it-works" },
     { label: "Membership", href: "/#membership" },
     { label: "Charity", href: "/#impact" },
+    { label: "Sign in", href: "/login" },
+    { label: "Sign up", href: "/signup" },
   ];
   return (
     <footer className="border-t border-border/70">
@@ -107,7 +123,8 @@ export function Footer() {
           <div className="max-w-sm">
             <p className="text-[0.95rem] text-foreground">Digital Heroes</p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              A golf membership experience built around play, prizes, and positive charitable impact.
+              A golf membership experience built around play, prizes, and positive charitable
+              impact.
             </p>
           </div>
           <div className="flex flex-col gap-3">
@@ -125,7 +142,7 @@ export function Footer() {
         <div className="rule-line mt-16" />
         <div className="mt-6 flex flex-col gap-2 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
           <span className="font-mono">© 2026 Digital Heroes</span>
-          <span>Subscriptions, draws, and account services are not yet connected.</span>
+          <span>Golf membership, prize draws, and charitable giving.</span>
         </div>
       </div>
     </footer>

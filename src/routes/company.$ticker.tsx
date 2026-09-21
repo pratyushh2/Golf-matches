@@ -49,9 +49,13 @@ function CompanyPage() {
               <p className="label-mono">Not tracked</p>
               <h1 className="mt-6 text-3xl tracking-[-0.02em]">No filings for “{ticker}”</h1>
               <p className="mt-4 max-w-md text-muted-foreground">
-                Only a small set of companies is available while the analysis backend is being connected.
+                Only a small set of companies is available while the analysis backend is being
+                connected.
               </p>
-              <Link to="/" className="hover-arrow mt-8 inline-flex items-center gap-2 text-sm text-foreground">
+              <Link
+                to="/"
+                className="hover-arrow mt-8 inline-flex items-center gap-2 text-sm text-foreground"
+              >
                 Back to search <span className="arrow font-mono text-signal">→</span>
               </Link>
             </div>
@@ -67,7 +71,9 @@ function CompanyPage() {
               <div className="mt-8 grid gap-14 md:grid-cols-12">
                 <div className="md:col-span-4">
                   <h1 className="text-3xl tracking-[-0.025em] sm:text-4xl">{company.name}</h1>
-                  <p className="mt-3 font-mono text-[0.75rem] tracking-[0.14em] text-signal">{company.ticker}</p>
+                  <p className="mt-3 font-mono text-[0.75rem] tracking-[0.14em] text-signal">
+                    {company.ticker}
+                  </p>
                   <p className="mt-4 text-sm text-muted-foreground">{filingRange(company)}</p>
                   <span className="mt-8 inline-flex items-center gap-2 border border-border px-3 py-1.5 font-mono text-[0.62rem] tracking-[0.14em] text-muted-foreground uppercase">
                     <span className="h-1.5 w-1.5 rounded-full bg-signal" /> Filing data available
@@ -77,7 +83,9 @@ function CompanyPage() {
                     {company.years.map((y) => (
                       <li key={y} className="flex items-center gap-3">
                         <span className="h-px w-6 bg-border-strong" />
-                        <span className="font-mono text-[0.72rem] tracking-[0.1em]">{y} · 10-K</span>
+                        <span className="font-mono text-[0.72rem] tracking-[0.1em]">
+                          {y} · 10-K
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -104,7 +112,9 @@ function CompanyPage() {
                         <h3 className="mt-5 text-base text-muted-foreground transition-colors group-hover:text-foreground">
                           {f.title}
                         </h3>
-                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.copy}</p>
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                          {f.copy}
+                        </p>
                       </div>
                     </div>
                   ))}

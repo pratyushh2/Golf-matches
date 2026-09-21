@@ -1,7 +1,16 @@
 import { useEffect, useRef } from "react";
 import { palette, usePrefersReducedMotion, useTheme } from "@/lib/theme";
 
-type P = { x: number; y: number; bx: number; by: number; vx: number; vy: number; a: number; k: number };
+type P = {
+  x: number;
+  y: number;
+  bx: number;
+  by: number;
+  vx: number;
+  vy: number;
+  a: number;
+  k: number;
+};
 
 export function ParticleField() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
