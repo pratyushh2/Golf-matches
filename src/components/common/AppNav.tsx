@@ -3,11 +3,19 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { useProfile } from "@/hooks/useProfile";
 import { supabase } from "@/lib/supabase";
 import { Badge } from "@/components/common/States";
-import { Menu, X, LogOut, Shield } from "lucide-react";
+import { Menu, X, LogOut, Shield, Settings } from "lucide-react";
 
 interface NavLinkItem {
   label: string;
-  to: "/dashboard" | "/scores" | "/charity" | "/subscription" | "/draws" | "/winners" | "/admin";
+  to:
+    | "/dashboard"
+    | "/scores"
+    | "/charity"
+    | "/subscription"
+    | "/draws"
+    | "/winners"
+    | "/settings"
+    | "/admin";
   adminOnly?: boolean;
 }
 
@@ -18,6 +26,7 @@ const NAV_LINKS: NavLinkItem[] = [
   { label: "Membership", to: "/subscription" },
   { label: "Draws", to: "/draws" },
   { label: "Winnings", to: "/winners" },
+  { label: "Settings", to: "/settings" },
   { label: "Admin", to: "/admin", adminOnly: true },
 ];
 
@@ -67,8 +76,12 @@ export function AppNav({ currentPath }: { currentPath?: string }) {
 
         <div className="hidden items-center gap-4 md:flex">
           {profile && (
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-white/50">{profile.displayName}</span>
+            <Link
+              to="/settings"
+              className="flex items-center gap-2 rounded-lg px-2 py-1 text-xs text-white/60 hover:text-white hover:bg-white/[0.04] transition"
+              title="Manage profile & settings"
+            >
+              <span>{profile.displayName}</span>
               {isAdmin && (
                 <Badge tone="good">
                   <span className="inline-flex items-center gap-1">
@@ -76,7 +89,7 @@ export function AppNav({ currentPath }: { currentPath?: string }) {
                   </span>
                 </Badge>
               )}
-            </div>
+            </Link>
           )}
           <button
             type="button"
@@ -121,7 +134,13 @@ export function AppNav({ currentPath }: { currentPath?: string }) {
             ))}
           </nav>
           <div className="mt-4 border-t border-white/10 pt-4 flex items-center justify-between">
-            <span className="text-xs text-white/50">{profile?.displayName ?? user?.email}</span>
+            <Link
+              to="/settings"
+              onClick={() => setMobileOpen(false)}
+              className="text-xs text-white/60 hover:text-white"
+            >
+              {profile?.displayName ?? user?.email}
+            </Link>
             <button
               type="button"
               onClick={handleSignOut}

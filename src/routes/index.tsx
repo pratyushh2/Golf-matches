@@ -5,6 +5,7 @@ import { Header, Footer } from "@/components/si/Chrome";
 import { Hero } from "@/components/si/Hero";
 import { Pipeline } from "@/components/si/Pipeline";
 import { Capabilities } from "@/components/si/Capabilities";
+import { FeaturedCharity } from "@/components/si/FeaturedCharity";
 import { Membership } from "@/components/si/Membership";
 
 export const Route = createFileRoute("/")({
@@ -39,19 +40,7 @@ function Index() {
           <Hero />
           <Capabilities />
           <Pipeline />
-          <section id="impact" className="mx-auto max-w-6xl px-6 pb-32">
-            <div className="rule-line" />
-            <div className="grid gap-8 pt-12 md:grid-cols-12">
-              <p className="label-mono md:col-span-3">Charity impact</p>
-              <div className="md:col-span-7 md:col-start-5">
-                <h2 className="text-3xl sm:text-4xl">A contribution beyond the course.</h2>
-                <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">
-                  Part of the subscription contribution is intended to support charity. Live charity
-                  partners and contribution information will appear here once connected.
-                </p>
-              </div>
-            </div>
-          </section>
+          <FeaturedCharity />
           <Membership />
         </main>
         <Footer />

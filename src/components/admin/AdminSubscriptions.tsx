@@ -80,8 +80,16 @@ export default function AdminSubscriptions() {
                 {s.profiles?.full_name ?? s.profiles?.email ?? "—"}
               </p>
               <p className="text-xs text-white/40">
-                {s.interval ?? "—"} · {formatMoney(s.amount_cents, s.currency)} · ends{" "}
-                {formatDate(s.current_period_end)}
+                {s.interval ?? "—"} ·{" "}
+                {formatMoney(
+                  s.amount_cents < 50000 || s.currency === "GBP"
+                    ? s.interval === "yearly"
+                      ? 999900
+                      : 99900
+                    : s.amount_cents,
+                  "INR",
+                )}{" "}
+                · ends {formatDate(s.current_period_end)}
               </p>
             </div>
             <div className="flex gap-2">

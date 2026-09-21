@@ -2,12 +2,12 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useProfile } from "@/hooks/useProfile";
 import { AppNav } from "@/components/common/AppNav";
-import { ProfileSummary } from "@/components/dashboard/ProfileSummary";
-import ParticipationCard from "@/components/dashboard/ParticipationCard";
-import CharitySummaryCard from "@/components/dashboard/CharitySummaryCard";
-import { SubscriptionPanel } from "@/components/subscription/SubscriptionPanel";
-import { ScoresPanel } from "@/components/scores/ScoresPanel";
-import { WinnersPanel } from "@/components/winners/WinnersPanel";
+import { DashboardHero } from "@/components/dashboard/DashboardHero";
+import { DrawHeroCard } from "@/components/dashboard/DrawHeroCard";
+import { MemberSummaryCards } from "@/components/dashboard/MemberSummaryCards";
+import { JourneyTracker } from "@/components/dashboard/JourneyTracker";
+import { ImpactCard } from "@/components/dashboard/ImpactCard";
+import { QuickActions } from "@/components/dashboard/QuickActions";
 import { Panel, Loading } from "@/components/common/States";
 
 export const Route = createFileRoute("/dashboard")({
@@ -42,23 +42,23 @@ function Dashboard() {
       <AppNav currentPath="/dashboard" />
 
       <main className="mx-auto max-w-6xl px-6 py-10 space-y-8">
-        {/* Header Profile Summary */}
-        <ProfileSummary />
+        {/* A. Member Header */}
+        <DashboardHero />
 
-        {/* Status Row: Participation & Charity */}
-        <div className="grid gap-6 md:grid-cols-2">
-          <ParticipationCard />
-          <CharitySummaryCard />
+        {/* B. Quick Actions */}
+        <QuickActions />
+
+        {/* C. Current Draw — Hero Card (full width) */}
+        <DrawHeroCard />
+
+        {/* D. Summary Cards */}
+        <MemberSummaryCards />
+
+        {/* E. Journey + Impact (side by side on md+) */}
+        <div className="grid gap-6 md:grid-cols-[1fr_1.4fr]">
+          <JourneyTracker />
+          <ImpactCard />
         </div>
-
-        {/* Membership & Subscription Overview */}
-        <SubscriptionPanel compact />
-
-        {/* Score Log Overview (Latest 5 active in draw) */}
-        <ScoresPanel compact />
-
-        {/* Recent Winnings */}
-        <WinnersPanel compact />
       </main>
     </div>
   );

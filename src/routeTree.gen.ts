@@ -16,6 +16,7 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DrawsRouteImport } from './routes/draws'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ScoresRouteImport } from './routes/scores'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as SubscriptionRouteImport } from './routes/subscription'
 import { Route as WinnersRouteImport } from './routes/winners'
@@ -56,6 +57,11 @@ const ScoresRoute = ScoresRouteImport.update({
   path: '/scores',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/draws': typeof DrawsRoute
   '/login': typeof LoginRoute
   '/scores': typeof ScoresRoute
+  '/settings': typeof SettingsRoute
   '/signup': typeof SignupRoute
   '/subscription': typeof SubscriptionRoute
   '/winners': typeof WinnersRoute
@@ -98,6 +105,7 @@ export interface FileRoutesByTo {
   '/draws': typeof DrawsRoute
   '/login': typeof LoginRoute
   '/scores': typeof ScoresRoute
+  '/settings': typeof SettingsRoute
   '/signup': typeof SignupRoute
   '/subscription': typeof SubscriptionRoute
   '/winners': typeof WinnersRoute
@@ -112,6 +120,7 @@ export interface FileRoutesById {
   '/draws': typeof DrawsRoute
   '/login': typeof LoginRoute
   '/scores': typeof ScoresRoute
+  '/settings': typeof SettingsRoute
   '/signup': typeof SignupRoute
   '/subscription': typeof SubscriptionRoute
   '/winners': typeof WinnersRoute
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
     | '/draws'
     | '/login'
     | '/scores'
+    | '/settings'
     | '/signup'
     | '/subscription'
     | '/winners'
@@ -140,6 +150,7 @@ export interface FileRouteTypes {
     | '/draws'
     | '/login'
     | '/scores'
+    | '/settings'
     | '/signup'
     | '/subscription'
     | '/winners'
@@ -153,6 +164,7 @@ export interface FileRouteTypes {
     | '/draws'
     | '/login'
     | '/scores'
+    | '/settings'
     | '/signup'
     | '/subscription'
     | '/winners'
@@ -167,6 +179,7 @@ export interface RootRouteChildren {
   DrawsRoute: typeof DrawsRoute
   LoginRoute: typeof LoginRoute
   ScoresRoute: typeof ScoresRoute
+  SettingsRoute: typeof SettingsRoute
   SignupRoute: typeof SignupRoute
   SubscriptionRoute: typeof SubscriptionRoute
   WinnersRoute: typeof WinnersRoute
@@ -224,6 +237,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ScoresRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/signup': {
       id: '/signup'
       path: '/signup'
@@ -263,6 +283,7 @@ const rootRouteChildren: RootRouteChildren = {
   DrawsRoute: DrawsRoute,
   LoginRoute: LoginRoute,
   ScoresRoute: ScoresRoute,
+  SettingsRoute: SettingsRoute,
   SignupRoute: SignupRoute,
   SubscriptionRoute: SubscriptionRoute,
   WinnersRoute: WinnersRoute,

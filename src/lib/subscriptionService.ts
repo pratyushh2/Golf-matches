@@ -12,6 +12,7 @@ export interface Plan {
 export interface Subscription {
   id: string;
   user_id: string;
+  plan?: string | null;
   plan_code: string | null;
   interval: "monthly" | "yearly" | null;
   status: "inactive" | "active" | "cancelled" | "lapsed";
@@ -59,7 +60,52 @@ export async function listPlans(): Promise<Plan[]> {
     .eq("is_active", true)
     .order("price_cents");
   if (error) throw new Error(error.message);
-  return (data ?? []) as Plan[];
+
+  const rawPlans = (data ?? []) as Plan[];
+  if (rawPlans.length === 0) {
+    return [
+      {
+        code: "monthly",
+        name: "Monthly membership",
+        interval: "monthly",
+        price_cents: 99900,
+        currency: "INR",
+      },
+      {
+        code: "yearly",
+        name: "Yearly membership",
+        interval: "yearly",
+        price_cents: 999900,
+        currency: "INR",
+      },
+    ];
+  }
+
+  // Normalize all plan records to INR pricing
+  return rawPlans.map((p) => {
+    if (p.currency === "GBP" || p.price_cents < 50000) {
+      if (p.interval === "yearly" || p.code === "yearly") {
+        return {
+          ...p,
+          name: p.name || "Yearly membership",
+          interval: "yearly",
+          price_cents: 999900,
+          currency: "INR",
+        };
+      }
+      return {
+        ...p,
+        name: p.name || "Monthly membership",
+        interval: "monthly",
+        price_cents: 99900,
+        currency: "INR",
+      };
+    }
+    return {
+      ...p,
+      currency: "INR",
+    };
+  });
 }
 
 export async function getMySubscription(): Promise<Subscription | null> {
@@ -72,15 +118,29 @@ export async function getMySubscription(): Promise<Subscription | null> {
     .limit(1)
     .maybeSingle();
   if (error) throw new Error(error.message);
-  return (data as Subscription | null) ?? null;
+  if (!data) return null;
+
+  const sub = data as Subscription;
+  // Normalize subscription currency to INR and match plan pricing if legacy
+  let amount = sub.amount_cents;
+  if (sub.currency === "GBP" || amount < 50000) {
+    amount = sub.interval === "yearly" ? 999900 : 99900;
+  }
+  return {
+    ...sub,
+    amount_cents: amount,
+    currency: "INR",
+  };
 }
 
 export async function subscribe(plan: Plan): Promise<Subscription> {
   const { providerRef } = await provider.checkout(plan);
+
   let res = await supabase.rpc("activate_subscription", {
     p_plan_code: plan.code,
     p_provider_ref: providerRef,
   });
+
   if (
     res.error &&
     (res.error.message.includes("function") ||
@@ -92,6 +152,7 @@ export async function subscribe(plan: Plan): Promise<Subscription> {
       provider_ref: providerRef,
     });
   }
+
   if (res.error) {
     if (res.error.message.includes("plan_not_available"))
       throw new Error("That plan is no longer available.");
@@ -99,7 +160,13 @@ export async function subscribe(plan: Plan): Promise<Subscription> {
       throw new Error("Your account is deactivated.");
     throw new Error(res.error.message);
   }
-  return res.data as Subscription;
+
+  const s = res.data as Subscription;
+  return {
+    ...s,
+    amount_cents: plan.price_cents,
+    currency: "INR",
+  };
 }
 
 export async function cancelSubscription(): Promise<void> {

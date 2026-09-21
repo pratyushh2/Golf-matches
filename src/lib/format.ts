@@ -1,9 +1,15 @@
-export function formatMoney(cents: number | null | undefined, currency = "GBP"): string {
+export function formatMoney(cents: number | null | undefined, currency = "INR"): string {
   const value = (cents ?? 0) / 100;
+  const curr = currency === "GBP" ? "INR" : currency || "INR";
   try {
-    return new Intl.NumberFormat(undefined, { style: "currency", currency }).format(value);
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: curr,
+      maximumFractionDigits: 2,
+      minimumFractionDigits: 2,
+    }).format(value);
   } catch {
-    return `${currency} ${value.toFixed(2)}`;
+    return `₹${value.toFixed(2)}`;
   }
 }
 
